@@ -1,0 +1,33 @@
+name: ci-cd
+on:
+ workflow_dispatch:
+ push:
+  branch:
+    - master
+    - develop
+
+jobs:
+  build-push:
+    runs-on: self-hosted
+    env:
+      DB_USERNAME: ${{ vars.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASS }}
+    steps:
+      - name: clone the repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ vars.GITHUB_REF_NAME }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: print variables
+        run: echo "${{ env.DB_USERNAME }}, ${{ env.DB_PASSWORD }}"
+
+      - name: build
+        run: |
+          mvn clean install
