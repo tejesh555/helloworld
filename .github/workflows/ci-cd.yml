@@ -11,5 +11,5 @@ jobs:
     uses: github-reusable/.github/workflow/build-push.yml@main
     with:
       DB_USERNAME: ${{ vars.DB_USERNAME }}
-      DB_PASSWORD: ${{ secrets.DB_PASS }}
+      DB_PASS: ${{ secrets.DB_PASS }}
     secrets: inherit
