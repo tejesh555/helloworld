@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-push:
+    steps:
      - name: build my application
        uses: github-reusable/.github/workflow/build-push.yml
        with:
