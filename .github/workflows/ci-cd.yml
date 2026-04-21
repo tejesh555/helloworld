@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-push:
-       uses: github-reusable/.github/workflow/build-push.yml
-       with:
-        DB_USERNAME: ${{ vars.DB_USERNAME }}
-        DB_PASSWORD: ${{ secrets.DB_PASS }}
+    uses: github-reusable/.github/workflow/build-push.yml@main
+    with:
+      DB_USERNAME: ${{ vars.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASS }}
